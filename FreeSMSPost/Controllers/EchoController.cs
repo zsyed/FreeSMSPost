@@ -14,7 +14,6 @@ namespace FreeSMSPost.Controllers
         //
         // GET: /Echo/
 
-        [HttpPost]
         public ActionResult Index()
         {
             // return Content(String.Format("<Response><Sms>{0}</Sms></Response>", Request.Params["Body"]));
