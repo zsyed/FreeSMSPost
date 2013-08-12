@@ -18,7 +18,7 @@ namespace FreeSMSPost.Controllers
         public ActionResult Index()
         {
             // return Content(String.Format("<Response><Sms>{0}</Sms></Response>", Request.Params["Body"]));
-            var to = "+17144691491";
+            var to = "+19492099893";
             var message = "I am sending message to google voice number from website";
 
             Task<HttpResponseMessage> succeeded = SendSms(to, message);
@@ -26,7 +26,7 @@ namespace FreeSMSPost.Controllers
             if (succeeded.Result.IsSuccessStatusCode)
                 return Content("SMS Message queued...");
             else
-                return Content("SMS Message queued...");
+                return Content("SMS Message errored out....");
         }
 
         private static async Task<HttpResponseMessage> SendSms(string to, string message)
