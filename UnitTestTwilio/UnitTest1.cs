@@ -1,32 +1,30 @@
 ﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-using System.Threading.Tasks;
 using System.Web;
-using System.Web.Mvc;
+using System.Threading.Tasks;
 
-namespace FreeSMSPost.Controllers
+
+namespace UnitTestTwilio
 {
-    public class EchoController : Controller
+    [TestClass]
+    public class UnitTest1
     {
-        //
-        // GET: /Echo/
-
-        public ActionResult Index()
+        [TestMethod]
+        public void TestMethod1()
         {
-            // return Content(String.Format("<Response><Sms>{0}</Sms></Response>", Request.Params["Body"]));
             var to = "+17144691491";
-            var message = "I am sending message to google voice number from website";
+            var message = "I am sending message to google voice number";
 
-            Task<HttpResponseMessage> succeeded = SendSms(to, message);
+            Task<HttpResponseMessage> succeeded = SendSms(to,message);
             succeeded.Wait();
-            if (succeeded.Result.IsSuccessStatusCode)
-                return Content("SMS Message queued...");
-            else
-                return Content("SMS Message queued...");
+            Console.WriteLine(succeeded.Result.IsSuccessStatusCode ? "SMS Message queued..." : "SMS Message failed...");
         }
 
         private static async Task<HttpResponseMessage> SendSms(string to, string message)
@@ -50,6 +48,5 @@ namespace FreeSMSPost.Controllers
                 return await client.PostAsync(targetUri, content);
             }
         }
-
     }
 }
