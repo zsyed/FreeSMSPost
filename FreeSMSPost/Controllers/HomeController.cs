@@ -8,19 +8,14 @@ namespace FreeSMSPost.Controllers
 {
     public class HomeController : Controller
     {
-        //public ActionResult Index()
-        //{
-        //    ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-
-        //    return View();
-        //}
-
-        [HttpPost]
         public ActionResult Index()
         {
-            return Content(String.Format("<Response><Sms>{0}</Sms></Response>", Request.Params["Body"]));
+            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
 
+            return View();
         }
+
+
 
         public ActionResult About()
         {
